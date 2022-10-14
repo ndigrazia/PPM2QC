@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="lib/com4j.jar"/>
+	<classpathentry kind="lib" path="lib/entor.jar"/>
+	<classpathentry kind="lib" path="lib/jacob.jar"/>
+	<classpathentry kind="lib" path="lib/log4j.jar"/>
+	<classpathentry kind="lib" path="lib/com4j-x86.dll"/>
+	<classpathentry kind="lib" path="lib/jacob-1.15-M3-x86.dll"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk"/>
+	<classpathentry kind="lib" path="lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

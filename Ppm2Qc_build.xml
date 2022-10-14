@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='iso-8859-1'?>
+<project name="PPM2QC" default="war" basedir=".">
+	
+	<description>PPM to QC Web Services build file</description>
+	
+	<property name="src" value="${basedir}/src"/>
+	<property name="lib" value="${basedir}/lib" />
+	<property name="build" value="${basedir}/build" />
+	<property name="dist" value="${basedir}/dist" />
+	<property name="webcontent" value="${basedir}/WebContent"/>
+	 
+	<path id="build.class.path">
+      	<fileset dir="${lib}">
+      		<include name="**/*.jar"/>
+		</fileset>		    
+	</path>
+	
+	<target name="clean">
+		<delete dir="${build}"/>
+		<delete dir="${dist}"/>
+	</target>
+	
+	<target name="prepare" depends="clean">
+		<tstamp/>
+		<mkdir dir="${build}"/>
+		<mkdir dir="${dist}"/>
+	</target>
+	
+	<target name="war" depends="compile" description="generate the distribution war" >
+		<!-- Follow standard WAR structure -->
+		<copydir dest="${dist}/war/build/WEB-INF/" src="${webcontent}/WEB-INF/" />
+	 	<copy todir="${dist}/war/build/WEB-INF/classes/">
+	    	<fileset dir="${build}">
+	    		<include name="**/QcPpmWebServices.class"/>
+	        	<include name="**/QcPpmApiServicesItf.class"/>
+	    		<include name="**/QcPpmApiServicesImp.class"/>
+	    		<include name="**/QcException.class"/>
+	    		<include name="**/ReleasesServicios.class"/>
+	    		<include name="**/QcSymbols.class"/>
+	    		<include name="**/QcConnection.class"/>
+	    		<include name="**/QcConnectionFactory.class"/>
+	    		<include name="**/QcPpmWebServicesClient.class"/>
+	    		<include name="**/QcPpmWebServicesException.class"/>
+	    		<include name="**/QcPpmWebServicesFault.class"/>
+	       	</fileset>
+	    </copy>
+		<jar jarfile="${dist}/war/PPM2QC.war" basedir="${dist}/war/build/"/>
+	</target>
+		
+	<target name="compile" depends="prepare">
+		<javac srcdir="${src}" destdir="${build}">
+			<classpath refid="build.class.path"/>
+		</javac> 
+	</target>
+	
+</project>
